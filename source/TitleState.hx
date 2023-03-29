@@ -52,6 +52,8 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
+                #if android FlxG.android.preventDefaultKeys = [BACK]; #end
+
 		#if desktop
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
 			sys.FileSystem.createDirectory(Sys.getCwd() + "/assets/replays");
