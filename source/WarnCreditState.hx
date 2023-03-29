@@ -38,7 +38,24 @@ class WarnCreditState extends MusicBeatState
 		kadeLogo.y -= 180;
 		kadeLogo.alpha = 0.8;
 		add(kadeLogo);
-		
+
+                #if mobileC
+		var txt:FlxText = new FlxText(0, 0, FlxG.width,
+			"You are entering an Unfinished Corner of the Mod\n"
+			+ "Currently, this menu is incomplete and Broken, so please be patient. Everything will be complete in the Full Release Update.\n"
+			+ "If you want to still check the current Menu then Press A, Press B to go Back. \n"
+			+ "Be aware that the text might be broken.\n"
+			+ "Press Enter on an Icon to Visit their Social Media (If Available)"
+			);
+                #elseif mobileCweb
+		var txt:FlxText = new FlxText(0, 0, FlxG.width,
+			"You are entering an Unfinished Corner of the Mod\n"
+			+ "Currently, this menu is incomplete and Broken, so please be patient. Everything will be complete in the Full Release Update.\n"
+			+ "If you want to still check the current Menu then Press Enter or A, Press Escape/Backspace or B to go Back. \n"
+			+ "Be aware that the text might be broken.\n"
+			+ "Press Enter on an Icon to Visit their Social Media (If Available)"
+			);
+                #elseif (!mobileC || !mobileCweb)
 		var txt:FlxText = new FlxText(0, 0, FlxG.width,
 			"You are entering an Unfinished Corner of the Mod\n"
 			+ "Currently, this menu is incomplete and Broken, so please be patient. Everything will be complete in the Full Release Update.\n"
@@ -46,6 +63,7 @@ class WarnCreditState extends MusicBeatState
 			+ "Be aware that the text might be broken.\n"
 			+ "Press Enter on an Icon to Visit their Social Media (If Available)"
 			);
+                #end
 		
 		txt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.fromRGB(200, 200, 200), CENTER);
 		txt.borderColor = FlxColor.BLACK;
@@ -75,6 +93,10 @@ class WarnCreditState extends MusicBeatState
 			if(kadeLogo.alpha == 0.8) FlxTween.tween(kadeLogo, {alpha: 1}, 0.8, {ease: FlxEase.quartInOut});
 			else FlxTween.tween(kadeLogo, {alpha: 0.8}, 0.8, {ease: FlxEase.quartInOut});
 		}, 0);
+
+                #if (mobileC || mobileCweb)
+		addVirtualPad(NONE, A_B);
+		#end
 	}
 
 	override function update(elapsed:Float)
