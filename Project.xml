@@ -103,7 +103,7 @@
 	<haxelib name="faxe" if='switch'/>
 	<haxelib name="polymod" unless="mobile"/>
 	<haxelib name="discord_rpc" if="windows"/>
-	<haxelib name="linc_luajit" if="cpp"/>
+	<haxelib name="linc_luajit" if="cpp" unless="nolua"/>
 	<haxelib name="actuate" />
 	<haxelib name="extension-androidtools" if="android" />
 	<!--<haxelib name="extension-webm" if="desktop" />-->
