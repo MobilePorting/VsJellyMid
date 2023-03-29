@@ -31,6 +31,9 @@ class PauseSubState extends MusicBeatSubstate
 
 	public function new(x:Float, y:Float)
 	{
+	    Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
+
 		super();
 
 		pauseMusic = new FlxSound().loadEmbedded(Paths.music('breakfast'), true, true);

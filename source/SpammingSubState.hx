@@ -20,8 +20,6 @@ using StringTools;
 
 class SpammingSubState extends MusicBeatSubstate
 {
-	Paths.clearUnusedMemory();
-	Paths.clearStoredMemory();
 	var bf:Boyfriend;
 	var camFollow:FlxObject;
 	var BG:FlxSprite;
@@ -36,6 +34,8 @@ class SpammingSubState extends MusicBeatSubstate
 
 	override function create()
 	{
+	Paths.clearUnusedMemory();
+	Paths.clearStoredMemory();
 		#if windows
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Main Menu", null);
