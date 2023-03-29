@@ -21,6 +21,9 @@ using StringTools;
 
 class SpammingSubState extends MusicBeatSubstate
 {
+                Paths.clearUnusedMemory();
+                Paths.clearStoredMemory();
+
 	var bf:Boyfriend;
 	var camFollow:FlxObject;
 	var BG:FlxSprite;

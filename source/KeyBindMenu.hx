@@ -138,7 +138,7 @@ class KeyBindMenu extends FlxSubState
                 if (FlxG.keys.justPressed.TAB)
                 {
                     KeyBinds.gamepad = !KeyBinds.gamepad;
-                    infoText.text = 'Current Mode: ${KeyBinds.gamepad ? 'GAMEPAD' : 'KEYBOARD'}. Press TAB to switch\n(${KeyBinds.gamepad ? 'RIGHT Trigger' : 'Escape'} to save, ${KeyBinds.gamepad ? 'LEFT Trigger' : 'Backspace'} to leave without saving. ${KeyBinds.gamepad ? 'START To change a keybind' : ''})';
+                    infoText.text = 'Current Mode: ${KeyBinds.gamepad ? 'GAMEPAD' : 'KEYBOARD'}. Press TAB to switch\n(${KeyBinds.gamepad ? 'RIGHT Trigger' : 'Backscape'} to save, ${KeyBinds.gamepad ? 'LEFT Trigger' : 'Escape'} to leave without saving. ${KeyBinds.gamepad ? 'START To change a keybind' : ''})';
                     textUpdate();
                 }
 
@@ -146,10 +146,10 @@ class KeyBindMenu extends FlxSubState
                     FlxG.sound.play(Paths.sound('scrollMenu'));
                     state = "input";
                 }
-                else if(FlxG.keys.justPressed.ESCAPE){
+                else if(#if android FlxG.android.justReleased.BACK || #end FlxG.keys.justPressed.BACKSCAPE){
                     quit();
                 }
-                else if (FlxG.keys.justPressed.BACKSPACE){
+                else if (FlxG.keys.justPressed.ESCAPE){
                     reset();
                 }
                 if (gamepad != null) // GP Logic

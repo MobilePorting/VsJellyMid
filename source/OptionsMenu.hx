@@ -18,6 +18,9 @@ import lime.utils.Assets;
 
 class OptionsMenu extends MusicBeatState
 {
+                Paths.clearUnusedMemory();
+                Paths.clearStoredMemory();
+
 	public static var instance:OptionsMenu;
 	var selector:FlxText;
 	var curSelected:Int = 0;
@@ -27,12 +30,13 @@ class OptionsMenu extends MusicBeatState
 			new DFJKOption(controls),
 			new SpectatorMode("Disables all the HUD Elements and serves for a good Cinematic Gamplay."),
 			new DownscrollOption("Change the layout of the strumline."),
+			new MiddleScroll("Toggle the middlescroll"),
 			new GhostTapOption("Ghost Tapping is when you tap a direction and it doesn't give you a miss."),
 			new Judgement("Customize your Hit Timings (LEFT or RIGHT)"),
 			new FPSCapOption("Cap your FPS"),
 			new ScrollSpeedOption("Change your scroll speed (1 = Chart dependent)"),
 			new AccuracyDOption("Change how accuracy is calculated. (Accurate = Simple, Complex = Milisecond Based)"),
-			new ResetButtonOption("Toggle pressing R to gameover."),
+			#if !web new ResetButtonOption("Toggle pressing R to gameover."), #end
 			// new OffsetMenu("Get a note offset based off of your inputs!"),
 			//new CustomizeGameplay("Drag'n'Drop Gameplay Modules around to your preference")
 		]),
@@ -49,7 +53,11 @@ class OptionsMenu extends MusicBeatState
 			new FPSOption("Toggle the FPS Counter"),
 			new FlashingLightsOption("Toggle flashing lights that can cause epileptic seizures and strain."),
 			new WatermarkOption("Enable and disable all watermarks from the engine.")
-		])
+		]),
+
+		new OptionCategory("Graphic", [
+                    new RenderOption("change rendering method"),
+                ])
 		
 	];
 
@@ -210,10 +218,11 @@ class OptionsMenu extends MusicBeatState
 					else if (#if (mobileC || mobileCweb) virtualPad.buttonLeft.pressed || #end FlxG.keys.pressed.LEFT)
 						FlxG.save.data.offset -= 0.1;
 			}
-		
 
+			#if !web
 			if (controls.RESET)
 					FlxG.save.data.offset = 0;
+			#end
 
 			if (controls.ACCEPT)
 			{

@@ -61,6 +61,9 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
+                Paths.clearUnusedMemory();
+                Paths.clearStoredMemory();
+
 		#if windows
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Main Menu", null);
@@ -176,10 +179,8 @@ class MainMenuState extends MusicBeatState
 	}
 
 	var selectedSomethin:Bool = false;
-
 	var canClick:Bool = true;
 	var usingMouse:Bool = false;
-	
 
 	override function update(elapsed:Float)
 	{
@@ -313,7 +314,6 @@ class MainMenuState extends MusicBeatState
 				FlxG.switchState(new WarnCreditState());
 			case 'vssteve':
 				CoolUtil.browserLoad('https://gamebanana.com/mods/288404');
-				trace("extras");
 			
 		}
 	}

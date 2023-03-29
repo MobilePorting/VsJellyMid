@@ -657,7 +657,7 @@ class PlayState extends MusicBeatState
 
 		// cameras = [FlxG.cameras.list[1]];
 
-                #if (mobileC || mobileCweb) addMobileControls(); #end
+                #if (mobileC || mobileCweb) addMobileControls(false); #end
 		startingSong = true;
 
 		
@@ -1236,6 +1236,14 @@ class PlayState extends MusicBeatState
 			babyArrow.animation.play('static');
 			babyArrow.x += 50;
 			babyArrow.x += ((FlxG.width / 2) * player);
+			
+			if (FlxG.save.data.middleScroll) {
+				babyArrow.x -= 275;
+				if (player != 1) {
+					babyArrow.visible = false;
+				}
+			}
+
 
 			cpuStrums.forEach(function(spr:FlxSprite)
 			{					
@@ -1436,7 +1444,7 @@ class PlayState extends MusicBeatState
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore,songScoreDef,nps,maxNPS,accuracy);
 
-		if (controls.PAUSE && startedCountdown && canPause)
+		if (#if android FlxG.android.justReleased.BACK || #end controls.PAUSE && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
 			persistentDraw = true;
