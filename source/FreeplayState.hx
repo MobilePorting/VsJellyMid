@@ -128,12 +128,12 @@ class FreeplayState extends MusicBeatState
 		#if mobileC
 		if (FlxG.save.data.mobileC)
 		{
-			addVirtualPad(LEFT_FULL, A_B_C);
+			addVirtualPad(UP_DOWN, A_B_C);
 		}
 		#elseif mobileCweb
 		if (FlxG.save.data.mobileC)
 		{
-			addVirtualPad(LEFT_FULL, A_B);
+			addVirtualPad(UP_DOWN, A_B);
 		}
 		#end
 
