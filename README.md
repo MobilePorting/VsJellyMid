@@ -2,7 +2,7 @@
 
 
 # Vs JellyMid
-![GitHub repo size](https://img.shields.io/github/repo-size/TracedInPurple/VsJellyMid) ![Lines of code](https://img.shields.io/tokei/lines/github/TracedInPurple/VsJellyMid) 
+![GitHub repo size](https://img.shields.io/github/repo-size/MobilePorting/VsJellyMid) ![Lines of code](https://img.shields.io/tokei/lines/github/MobilePorting/VsJellyMid) 
 
 # Friday Night Funkin': Kade Engine
 ## Friday Night Funkin'
