@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-${{ matrix.version }}
     strategy:
       matrix:
-        version: [20.04, 22.04]
+        version: [22.04]
         build: [release, debug]
         arch: [arm64, armv7, 32]
     steps:
@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-${{ matrix.version }}
     strategy:
       matrix:
-        version: [20.04, 22.04]
+        version: [22.04]
         build: [release, debug]
     steps:
       - name: Checkout
@@ -118,7 +118,7 @@ jobs:
     runs-on: ubuntu-${{ matrix.version }}
     strategy:
       matrix:
-        version: [20.04, 22.04]
+        version: [22.04]
         build: [release, debug]
     steps:
       - name: Checkout
