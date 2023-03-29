@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         version: [22.04]
-        build: [release, debug]
+        build: [release]
         arch: [arm64, armv7, 32]
     steps:
       - name: Checkout
@@ -65,7 +65,7 @@ jobs:
     strategy:
       matrix:
         version: [22.04]
-        build: [release, debug]
+        build: [release]
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -119,7 +119,7 @@ jobs:
     strategy:
       matrix:
         version: [22.04]
-        build: [release, debug]
+        build: [release]
     steps:
       - name: Checkout
         uses: actions/checkout@main
