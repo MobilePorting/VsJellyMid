@@ -17,10 +17,13 @@ class CoolUtil
 		return difficultyArray[PlayState.storyDifficulty];
 	}
 
-	public static function boundTo(value:Float, min:Float, max:Float):Float {
+	public static function boundTo(value:Float, min:Float, max:Float):Float
+	{
 		var newValue:Float = value;
-		if(newValue < min) newValue = min;
-		else if(newValue > max) newValue = max;
+		if (newValue < min)
+			newValue = min;
+		else if (newValue > max)
+			newValue = max;
 		return newValue;
 	}
 
@@ -35,18 +38,18 @@ class CoolUtil
 
 		return daList;
 	}
-	
+
 	public static function coolStringFile(path:String):Array<String>
+	{
+		var daList:Array<String> = path.trim().split('\n');
+
+		for (i in 0...daList.length)
 		{
-			var daList:Array<String> = path.trim().split('\n');
-	
-			for (i in 0...daList.length)
-			{
-				daList[i] = daList[i].trim();
-			}
-	
-			return daList;
+			daList[i] = daList[i].trim();
 		}
+
+		return daList;
+	}
 
 	public static function numberArray(max:Int, ?min = 0):Array<Int>
 	{
@@ -58,7 +61,8 @@ class CoolUtil
 		return dumbArray;
 	}
 
-	public static function browserLoad(site:String) {
+	public static function browserLoad(site:String)
+	{
 		#if linux
 		Sys.command('/usr/bin/xdg-open', [site, "&"]);
 		#else

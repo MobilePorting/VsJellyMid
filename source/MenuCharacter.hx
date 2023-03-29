@@ -67,7 +67,7 @@ class MenuCharacter extends FlxSprite
 
 		var setting:CharacterSetting = settings[character];
 		offset.set(setting.x, setting.y);
-		//setGraphicSize(Std.int(width * setting.scale));
+		// setGraphicSize(Std.int(width * setting.scale));
 		flipX = setting.flipped != flipped;
 	}
 }

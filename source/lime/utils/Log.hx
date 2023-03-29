@@ -55,7 +55,8 @@ class Log
 						+ '-'
 						+ Date.now().toString().replace(' ', '-').replace(':', "'")
 						+ '.txt',
-						message + '\n');
+						message
+						+ '\n');
 				}
 				catch (e:Dynamic)
 				{

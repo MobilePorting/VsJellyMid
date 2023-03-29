@@ -16,7 +16,6 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import lime.system.System;
-
 #if windows
 import Discord.DiscordClient;
 #end
@@ -44,6 +43,7 @@ class MainMenuState extends MusicBeatState
 
 	var newGaming:FlxText;
 	var newGaming2:FlxText;
+
 	public static var firstStart:Bool = true;
 
 	public static var nightly:String = "";
@@ -52,6 +52,7 @@ class MainMenuState extends MusicBeatState
 	public static var gameVer:String = "1.17";
 
 	var camFollow:FlxObject;
+
 	public static var finishedFunnyMove:Bool = false;
 
 	var tween:FlxTween;
@@ -61,8 +62,8 @@ class MainMenuState extends MusicBeatState
 
 	override function create()
 	{
-                Paths.clearUnusedMemory();
-                Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
 
 		#if windows
 		// Updating Discord Rich Presence
@@ -78,16 +79,16 @@ class MainMenuState extends MusicBeatState
 
 		FlxG.mouse.visible = true;
 
-		//var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBG"));
-		//menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
-		//menuBG.x -= 800;
-		//menuBG.y -= 400;
-		//menuBG.updateHitbox();
-		//menuBG.antialiasing = false;
-		//menuBG.scale.set(1.3, 1.3);
-		//add(menuBG);
+		// var menuBG:FlxSprite = new FlxSprite().loadGraphic(Paths.image("menuBG"));
+		// menuBG.setGraphicSize(Std.int(menuBG.width * 1.1));
+		// menuBG.x -= 800;
+		// menuBG.y -= 400;
+		// menuBG.updateHitbox();
+		// menuBG.antialiasing = false;
+		// menuBG.scale.set(1.3, 1.3);
+		// add(menuBG);
 
-        camFollow = new FlxObject(0, 0, 0, 0);
+		camFollow = new FlxObject(0, 0, 0, 0);
 		add(camFollow);
 
 		pano = new FlxSprite(-1600, 0).loadGraphic(Paths.image('menuBG'));
@@ -99,19 +100,17 @@ class MainMenuState extends MusicBeatState
 		panoclone.antialiasing = true;
 		panoclone.updateHitbox();
 		add(panoclone);
-		
+
 		startscroll = true;
 
 		var minecraft:FlxSprite = new FlxSprite().loadGraphic(Paths.image("jellymid"));
-        minecraft.antialiasing = true;
+		minecraft.antialiasing = true;
 		minecraft.screenCenter();
 		minecraft.y -= 150;
-        minecraft.updateHitbox();
+		minecraft.updateHitbox();
 		add(minecraft);
-	
 
 		menuItems = new FlxTypedGroup<FlxSprite>();
-		
 
 		var tex = Paths.getSparrowAtlas('FNF_main_menu_assets');
 
@@ -127,21 +126,21 @@ class MainMenuState extends MusicBeatState
 			butos.updateHitbox();
 			butos.screenCenter(X);
 			butos.scrollFactor.set();
-			switch(i) 
+			switch (i)
 			{
-				case 1: //freeplay
+				case 1: // freeplay
 					butos.setPosition(butos.x, 340);
 				case 2: // options
 					butos.setPosition(butos.x - 110, 550);
-				case 3: //quit game
+				case 3: // quit game
 					butos.setPosition(butos.x + 110, 550);
-				case 4: //credits?
+				case 4: // credits?
 					butos.setPosition(butos.x - 250, 550);
-				case 5: //uoh?
+				case 5: // uoh?
 					butos.setPosition(butos.x + 250, 550);
-				case 6: //VS STEVE MOD
-				    butos.setPosition(butos.x, 405);
-				case 7: //uoh?
+				case 6: // VS STEVE MOD
+					butos.setPosition(butos.x, 405);
+				case 7: // uoh?
 					butos.setPosition(butos.x + 300, 550);
 			}
 			menuItems.add(butos);
@@ -150,16 +149,15 @@ class MainMenuState extends MusicBeatState
 
 		firstStart = false;
 
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 30, 0, gameVer +  (Main.watermarks ? " Minecraft " + kadeEngineVer + " Steve Engine?" : ""), 20);
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 30, 0, gameVer + (Main.watermarks ? " Minecraft " + kadeEngineVer + " Steve Engine?" : ""), 20);
 		versionShit.scrollFactor.set();
-		versionShit.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+		versionShit.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		versionShit.scrollFactor.set();
 		versionShit.borderSize = 1.25;
 		versionShit.antialiasing = false;
 		add(versionShit);
 
 		// NG.core.calls.event.logEvent('swag').send();
-
 
 		if (FlxG.save.data.dfjk)
 			controls.setKeyboardScheme(KeyboardScheme.Solo, true);
@@ -168,12 +166,12 @@ class MainMenuState extends MusicBeatState
 
 		changeItem();
 
-		//var textBox:FlxSprite = new FlxSprite().loadGraphic(Paths.image("textEnter"));
-        //textBox.antialiasing = false;
-		//textBox.screenCenter(X);
-        //textBox.updateHitbox();
-		//add(textBox);
-		//textBox.visible = false;
+		// var textBox:FlxSprite = new FlxSprite().loadGraphic(Paths.image("textEnter"));
+		// textBox.antialiasing = false;
+		// textBox.screenCenter(X);
+		// textBox.updateHitbox();
+		// add(textBox);
+		// textBox.visible = false;
 
 		super.create();
 	}
@@ -190,62 +188,61 @@ class MainMenuState extends MusicBeatState
 		}
 
 		if (startscroll == true)
-			{
-				startscroll = false;
-				panoclone.x = 1280;
-				pano.x = 0;
-				//pano.visible = false;
-				FlxTween.tween(pano, {x: -1600}, 90, {
+		{
+			startscroll = false;
+			panoclone.x = 1280;
+			pano.x = 0;
+			// pano.visible = false;
+			FlxTween.tween(pano, {x: -1600}, 90, {
 				onComplete: function(twn:FlxTween)
-			{
-				tween = FlxTween.tween(pano, { x: -2880 }, 90);
-				FlxTween.tween(panoclone, {x: 0}, 90, {
-				onComplete: function(twn:FlxTween)
-			{
-				tween.cancel();
-				startscroll = true;
-			}
-		});
-			}
-		});
-			}
+				{
+					tween = FlxTween.tween(pano, {x: -2880}, 90);
+					FlxTween.tween(panoclone, {x: 0}, 90, {
+						onComplete: function(twn:FlxTween)
+						{
+							tween.cancel();
+							startscroll = true;
+						}
+					});
+				}
+			});
+		}
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{
-			if(usingMouse)
+			if (usingMouse)
 			{
-				if(!FlxG.mouse.overlaps(spr))
+				if (!FlxG.mouse.overlaps(spr))
 					spr.animation.play('idle');
 			}
 
 			if (FlxG.mouse.overlaps(spr))
 			{
-				if(canClick)
+				if (canClick)
 				{
 					curSelected = spr.ID;
 					usingMouse = true;
 					spr.animation.play('selected');
 				}
 
-				if(FlxG.mouse.justPressed && canClick)
+				if (FlxG.mouse.justPressed && canClick)
 				{
 					selectSomething();
 				}
 			}
 		});
-			
-			if (!selectedSomethin)
-				{
-					var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
-				
-					if (controls.BACK)
-					{
-						FlxG.switchState(new TitleState());
-					}
-				}
-				
-			super.update(elapsed);
-			
+
+		if (!selectedSomethin)
+		{
+			var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
+
+			if (controls.BACK)
+			{
+				FlxG.switchState(new TitleState());
+			}
+		}
+
+		super.update(elapsed);
 	}
 
 	function selectSomething()
@@ -256,14 +253,14 @@ class MainMenuState extends MusicBeatState
 			FlxG.camera.shake(0.05, 0.05);
 		}
 		else if (optionShit[curSelected] == 'vssteve')
-			{
-				goToState();
-			}
+		{
+			goToState();
+		}
 		else
 		{
 			selectedSomethin = true;
 			FlxG.sound.play(Paths.sound('confirmMenu'));
-			
+
 			canClick = false;
 
 			menuItems.forEach(function(spr:FlxSprite)
@@ -283,9 +280,9 @@ class MainMenuState extends MusicBeatState
 				{
 					FlxG.camera.fade(FlxColor.BLACK, 0.3, false);
 					new FlxTimer().start(0.3, function(tmr:FlxTimer)
-						{
-							goToState();
-						});
+					{
+						goToState();
+					});
 				}
 			});
 		}
@@ -314,7 +311,6 @@ class MainMenuState extends MusicBeatState
 				FlxG.switchState(new WarnCreditState());
 			case 'vssteve':
 				CoolUtil.browserLoad('https://gamebanana.com/mods/288404');
-			
 		}
 	}
 

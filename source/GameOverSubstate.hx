@@ -39,19 +39,19 @@ class GameOverSubstate extends MusicBeatSubstate
 
 		Conductor.songPosition = 0;
 
-		if(PlayState.SONG.song.toLowerCase() == 'atrocity')
+		if (PlayState.SONG.song.toLowerCase() == 'atrocity')
 		{
 			jelly = new Character(x, y, "jelly-death");
 			add(jelly);
 		}
 		else
-			{
-				bf = new Boyfriend(x, y, daBf);
-				add(bf);
-			}
+		{
+			bf = new Boyfriend(x, y, daBf);
+			add(bf);
+		}
 
-		if(PlayState.SONG.song.toLowerCase() == 'atrocity')
-		{	
+		if (PlayState.SONG.song.toLowerCase() == 'atrocity')
+		{
 			camFollow = new FlxObject(jelly.getGraphicMidpoint().x, jelly.getGraphicMidpoint().y - 100, 1, 1);
 			add(camFollow);
 		}
@@ -60,7 +60,6 @@ class GameOverSubstate extends MusicBeatSubstate
 			camFollow = new FlxObject(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y, 1, 1);
 			add(camFollow);
 		}
-		
 
 		FlxG.sound.play(Paths.sound('fnf_loss_sfx' + stageSuffix));
 		Conductor.changeBPM(100);
@@ -69,16 +68,16 @@ class GameOverSubstate extends MusicBeatSubstate
 		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width / 2, FlxG.height / 2));
 		FlxG.camera.scroll.set();
 		FlxG.camera.target = null;
-		
-		if(PlayState.SONG.song.toLowerCase() == 'atrocity')
+
+		if (PlayState.SONG.song.toLowerCase() == 'atrocity')
 		{
 			jelly.playAnim('firstDeath');
 			jelly.animation.stop();
-			if(jelly.animation.curAnim.finished)
+			if (jelly.animation.curAnim.finished)
 			{
 				jelly.playAnim('deathConfirm', true);
 				FlxG.sound.play(Paths.sound('voicelines/waaaaa'), 1);
-				if(jelly.animation.curAnim.finished)
+				if (jelly.animation.curAnim.finished)
 				{
 					endBullshit();
 				}
@@ -89,10 +88,12 @@ class GameOverSubstate extends MusicBeatSubstate
 			bf.playAnim('firstDeath');
 		}
 
-                #if (mobileC || mobileCweb)
-                if (FlxG.save.data.mobileC) {
-		addVirtualPad(NONE, A_B);
-		addVirtualPadCamera(false); }
+		#if (mobileC || mobileCweb)
+		if (FlxG.save.data.mobileC)
+		{
+			addVirtualPad(NONE, A_B);
+			addVirtualPadCamera(false);
+		}
 		#end
 	}
 
@@ -116,42 +117,40 @@ class GameOverSubstate extends MusicBeatSubstate
 			PlayState.loadRep = false;
 		}
 
-		if(PlayState.SONG.song.toLowerCase() == 'atrocity')
+		if (PlayState.SONG.song.toLowerCase() == 'atrocity')
+		{
+			if (jelly.animation.curAnim.name == 'firstDeath' && jelly.animation.curAnim.curFrame == 12)
 			{
-				if (jelly.animation.curAnim.name == 'firstDeath' && jelly.animation.curAnim.curFrame == 12)
-					{
-						FlxG.camera.follow(camFollow, LOCKON, 0.01);
-					}
+				FlxG.camera.follow(camFollow, LOCKON, 0.01);
 			}
-			else
+		}
+		else
+		{
+			if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)
 			{
-				if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)
-					{
-						FlxG.camera.follow(camFollow, LOCKON, 0.01);
-					}
+				FlxG.camera.follow(camFollow, LOCKON, 0.01);
 			}
+		}
 
-
-		if(PlayState.SONG.song.toLowerCase() == 'atrocity')
+		if (PlayState.SONG.song.toLowerCase() == 'atrocity')
 		{
 			if (jelly.animation.curAnim.name == 'firstDeath' && jelly.animation.curAnim.finished)
-				{
-					//FlxG.sound.play(Paths.sound('voicelines/waaaaa'), 1);		
-				}
-		}
-		else 
 			{
-				if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
-					{
-						FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix), 0.4);
-					}
+				// FlxG.sound.play(Paths.sound('voicelines/waaaaa'), 1);
 			}
-		
+		}
+		else
+		{
+			if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
+			{
+				FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix), 0.4);
+			}
+		}
 
 		if (FlxG.sound.music.playing)
 		{
 			Conductor.songPosition = FlxG.sound.music.time;
-			//FlxG.sound.music.volume = 0.5;
+			// FlxG.sound.music.volume = 0.5;
 		}
 	}
 
@@ -169,13 +168,13 @@ class GameOverSubstate extends MusicBeatSubstate
 		if (!isEnding)
 		{
 			isEnding = true;
-			if(PlayState.SONG.song.toLowerCase() == 'atrocity')
+			if (PlayState.SONG.song.toLowerCase() == 'atrocity')
 				trace('e');
-				//jelly.playAnim('deathConfirm', true);
+			// jelly.playAnim('deathConfirm', true);
 			else
 				bf.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
-			//FlxG.sound.play(Paths.music('gameOverEnd' + stageSuffix));
+			// FlxG.sound.play(Paths.music('gameOverEnd' + stageSuffix));
 			new FlxTimer().start(0.7, function(tmr:FlxTimer)
 			{
 				FlxG.camera.fade(FlxColor.BLACK, 2, false, function()

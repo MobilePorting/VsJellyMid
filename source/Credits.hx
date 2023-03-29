@@ -22,29 +22,60 @@ class Credits extends MusicBeatState
 	private var grpOptions:FlxTypedGroup<Alphabet>;
 	private var iconArray:Array<AttachedSprite> = [];
 
-	private static var creditsStuff:Array<Dynamic> = [ //Name - Icon name - Description - Link - BG Color
+	private static var creditsStuff:Array<Dynamic> = [
+		// Name - Icon name - Description - Link - BG Color
 		['VS jELLYMID TEaM'],
-		['THEGaBODIaZ', 'gabo', 'Creator - Main artist & Animator, Composer of Jellymid, Cover Creator of Atrocity MC Version, Charter', 'https://youtube.com/thegabodiaz', 0xFF5EEBD8],
-		['TRaCEDINPURPLE', 'tiago', 'Co-Creator - Main Coder, Menus', 'https://youtube.com/tracedinpurple', 0xFF41009C],
-    	['CHROMaSEN', 'chromasen', 'Extra Coder, Helper', 'https://twitter.com/chromasen', 0xFF41009C],
+		[
+			'THEGaBODIaZ',
+			'gabo',
+			'Creator - Main artist & Animator, Composer of Jellymid, Cover Creator of Atrocity MC Version, Charter',
+			'https://youtube.com/thegabodiaz',
+			0xFF5EEBD8
+		],
+		[
+			'TRaCEDINPURPLE',
+			'tiago',
+			'Co-Creator - Main Coder, Menus',
+			'https://youtube.com/tracedinpurple',
+			0xFF41009C
+		],
+		[
+			'CHROMaSEN',
+			'chromasen',
+			'Extra Coder, Helper',
+			'https://twitter.com/chromasen',
+			0xFF41009C
+		],
 		['ORIGINaL SONG BY'],
-		['SaSTER', 'saster', 'Creator of Atrocity | Provider of the FLP/MIDI files!', 'https://www.youtube.com/channel/UCC4CkqOAwulRil3BEK9L3Mg', 0xFF41009C],
-    	[''],
-    	['DISCORD', 'discord', 'Join the Official Vs Steve Community Server', 'https://discord.gg/aNTVTshnvA', 0xFF41009C]
+		[
+			'SaSTER',
+			'saster',
+			'Creator of Atrocity | Provider of the FLP/MIDI files!',
+			'https://www.youtube.com/channel/UCC4CkqOAwulRil3BEK9L3Mg',
+			0xFF41009C
+		],
+		[''],
+		[
+			'DISCORD',
+			'discord',
+			'Join the Official Vs Steve Community Server',
+			'https://discord.gg/aNTVTshnvA',
+			0xFF41009C
+		]
 	];
 
-    //background
+	// background
 	var bg:FlxSprite;
-    //description
+	// description
 	var justTextInfo:FlxText;
-    //color stuff
+	// color stuff
 	var originalColor:Int;
 	var colorTween:FlxTween;
 
 	override function create()
 	{
-                Paths.clearUnusedMemory();
-                Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
 
 		#if desktop
 		// Updating Discord Rich Presence
@@ -52,7 +83,7 @@ class Credits extends MusicBeatState
 		#end
 
 		bg = new FlxSprite().loadGraphic(Paths.image('creditsBGTest'));
-        bg.x -= 10;
+		bg.x -= 10;
 		bg.y -= 20;
 		bg.scale.set(1.8, 1.8);
 		bg.updateHitbox();
@@ -67,20 +98,20 @@ class Credits extends MusicBeatState
 			var optionText:Alphabet = new Alphabet(0, 70 * i, creditsStuff[i][0], !isSelectable, false);
 			optionText.isMenuItem = true;
 			optionText.screenCenter(X);
-			if(isSelectable) 
-            {
+			if (isSelectable)
+			{
 				optionText.x -= 70;
 			}
 			optionText.targetY = i;
 			grpOptions.add(optionText);
 
-			if(isSelectable) 
-            {				
-                var icon:AttachedSprite = new AttachedSprite('crediticons/' + creditsStuff[i][1]);
-                icon.xAdd = optionText.width + 10;
+			if (isSelectable)
+			{
+				var icon:AttachedSprite = new AttachedSprite('crediticons/' + creditsStuff[i][1]);
+				icon.xAdd = optionText.width + 10;
 				icon.yAdd = optionText.height - 20;
-			    icon.sprTracker = optionText;
-	
+				icon.sprTracker = optionText;
+
 				// using a FlxGroup is too much fuss!
 				iconArray.push(icon);
 				add(icon);
@@ -97,9 +128,11 @@ class Credits extends MusicBeatState
 		originalColor = bg.color;
 		changeSelection();
 
-                #if (mobileC || mobileCweb)
-                if (FlxG.save.data.mobileC) {
-		addVirtualPad(UP_DOWN, A_B); }
+		#if (mobileC || mobileCweb)
+		if (FlxG.save.data.mobileC)
+		{
+			addVirtualPad(UP_DOWN, A_B);
+		}
 		#end
 		super.create();
 	}
@@ -126,13 +159,15 @@ class Credits extends MusicBeatState
 
 		if (controls.BACK)
 		{
-			if(colorTween != null) {
+			if (colorTween != null)
+			{
 				colorTween.cancel();
 			}
 			FlxG.sound.play(Paths.sound('cancelMenu'));
 			FlxG.switchState(new MainMenuState());
 		}
-		if(accepted) {
+		if (accepted)
+		{
 			CoolUtil.browserLoad(creditsStuff[curSelected][3]);
 		}
 		super.update(elapsed);
@@ -141,22 +176,27 @@ class Credits extends MusicBeatState
 	function changeSelection(change:Int = 0)
 	{
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
-		do {
+		do
+		{
 			curSelected += change;
 			if (curSelected < 0)
 				curSelected = creditsStuff.length - 1;
 			if (curSelected >= creditsStuff.length)
 				curSelected = 0;
-		} while(unselectableCheck(curSelected));
+		}
+		while (unselectableCheck(curSelected));
 
 		var newColor:Int = creditsStuff[curSelected][4];
-		if(newColor != originalColor) {
-			if(colorTween != null) {
+		if (newColor != originalColor)
+		{
+			if (colorTween != null)
+			{
 				colorTween.cancel();
 			}
 			originalColor = newColor;
 			colorTween = FlxTween.color(bg, 1, bg.color, originalColor, {
-				onComplete: function(twn:FlxTween) {
+				onComplete: function(twn:FlxTween)
+				{
 					colorTween = null;
 				}
 			});
@@ -169,9 +209,11 @@ class Credits extends MusicBeatState
 			item.targetY = selctthing - curSelected;
 			selctthing++;
 
-			if(!unselectableCheck(selctthing-1)) {
+			if (!unselectableCheck(selctthing - 1))
+			{
 				item.alpha = 0.6;
-				if (item.targetY == 0) {
+				if (item.targetY == 0)
+				{
 					item.alpha = 1;
 				}
 			}
@@ -179,7 +221,8 @@ class Credits extends MusicBeatState
 		justTextInfo.text = creditsStuff[curSelected][2];
 	}
 
-	private function unselectableCheck(num:Int):Bool {
+	private function unselectableCheck(num:Int):Bool
+	{
 		return creditsStuff[num].length <= 1;
 	}
 }

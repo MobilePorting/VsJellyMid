@@ -29,18 +29,18 @@ class Main extends Sprite
 
 	public static function main():Void
 	{
-		// quick checks 
+		// quick checks
 		Lib.current.addChild(new Main());
-                #if cpp
-                cpp.NativeGc.enable(true);
-                cpp.NativeGc.run(true);
-                #end
+		#if cpp
+		cpp.NativeGc.enable(true);
+		cpp.NativeGc.run(true);
+		#end
 	}
 
 	public function new()
 	{
 		super();
-		
+
 		SUtil.uncaughtErrorHandler();
 
 		if (stage != null)
@@ -80,7 +80,7 @@ class Main extends Sprite
 		#if !debug
 		initialState = TitleState;
 		#end
-		
+
 		SUtil.checkFiles();
 
 		game = new FlxGame(gameWidth, gameHeight, initialState, zoom, framerate, framerate, skipSplash, startFullscreen);
@@ -96,7 +96,8 @@ class Main extends Sprite
 
 	var fpsCounter:FPS;
 
-	public function toggleFPS(fpsEnabled:Bool):Void {
+	public function toggleFPS(fpsEnabled:Bool):Void
+	{
 		fpsCounter.visible = fpsEnabled;
 	}
 

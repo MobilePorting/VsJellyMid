@@ -17,9 +17,9 @@ class Paths
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
 
 	static var currentLevel:String;
-	
+
 	public static var currentTrackedAssets:Map<String, FlxGraphic> = [];
-        public static var currentTrackedTextures:Map<String, Texture> = [];
+	public static var currentTrackedTextures:Map<String, Texture> = [];
 	public static var currentTrackedSounds:Map<String, Sound> = [];
 	public static var localTrackedAssets:Array<String> = [];
 
@@ -33,7 +33,7 @@ class Paths
 				@:privateAccess
 				if (obj != null)
 				{
-                                        var isTexture:Bool = currentTrackedTextures.exists(key);
+					var isTexture:Bool = currentTrackedTextures.exists(key);
 					if (isTexture)
 					{
 						var texture = currentTrackedTextures.get(key);
@@ -65,8 +65,8 @@ class Paths
 				}
 			}
 		}
-                System.gc();
-                #if cpp
+		System.gc();
+		#if cpp
 		cpp.NativeGc.run(true);
 		#end
 	}
@@ -149,7 +149,7 @@ class Paths
 		return getPath(file, type, library);
 	}
 
-	inline static public function lua(key:String,?library:String)
+	inline static public function lua(key:String, ?library:String)
 	{
 		return getPath('data/$key.lua', TEXT, library);
 	}
@@ -223,7 +223,7 @@ class Paths
 	{
 		return FlxAtlasFrames.fromSpriteSheetPacker(image(key, library), file('images/$key.txt', library));
 	}
-	
+
 	public static function returnGraphic(key:String, ?cache:Bool = true):FlxGraphic
 	{
 		var path:String = 'assets/$key.png';

@@ -22,11 +22,9 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.app.Application;
 import openfl.Assets;
-
 #if windows
 import Discord.DiscordClient;
 #end
-
 #if cpp
 import sys.thread.Thread;
 #end
@@ -44,7 +42,7 @@ class TitleState extends MusicBeatState
 	var ngSpr:FlxSprite;
 	var cakey:FlxSprite;
 
-    var tween:FlxTween;
+	var tween:FlxTween;
 
 	var curWacky:Array<String> = [];
 
@@ -52,10 +50,10 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-                Paths.clearUnusedMemory();
-                Paths.clearStoredMemory();
+		Paths.clearUnusedMemory();
+		Paths.clearStoredMemory();
 
-                #if android FlxG.android.preventDefaultKeys = [BACK]; #end
+		#if android FlxG.android.preventDefaultKeys = [BACK]; #end
 
 		#if desktop
 		if (!sys.FileSystem.exists(Sys.getCwd() + "/assets/replays"))
@@ -66,16 +64,16 @@ class TitleState extends MusicBeatState
 		{
 			trace("Loaded " + openfl.Assets.getLibrary("default").assetsLoaded + " assets (DEFAULT)");
 		}
-		
+
 		PlayerSettings.init();
 
 		#if windows
 		DiscordClient.initialize();
 
-		Application.current.onExit.add (function (exitCode) {
+		Application.current.onExit.add(function(exitCode)
+		{
 			DiscordClient.shutdown();
-		 });
-		 
+		});
 		#end
 
 		curWacky = FlxG.random.getObject(getIntroTextShit());
@@ -119,10 +117,10 @@ class TitleState extends MusicBeatState
 	}
 
 	var logoBl:FlxSprite;
-	//var gfDance:FlxSprite;
+	// var gfDance:FlxSprite;
 	var danceLeft:Bool = false;
 	var titleText:FlxSprite;
-    var pano:FlxSprite;
+	var pano:FlxSprite;
 	var panoclone:FlxSprite;
 	var startscroll:Bool;
 
@@ -158,7 +156,7 @@ class TitleState extends MusicBeatState
 		Conductor.changeBPM(72);
 		persistentUpdate = true;
 
-        pano = new FlxSprite(-1600, 0).loadGraphic(Paths.image('titleBG'));
+		pano = new FlxSprite(-1600, 0).loadGraphic(Paths.image('titleBG'));
 		pano.antialiasing = true;
 		pano.updateHitbox();
 		add(pano);
@@ -168,11 +166,11 @@ class TitleState extends MusicBeatState
 		panoclone.updateHitbox();
 		add(panoclone);
 
-		//new FlxSprite(100, FlxG.height * 0.10);
-		//var bg: FlxSprite = new FlxSprite(-100, -65).loadGraphic(Paths.image('stevetitle'));
+		// new FlxSprite(100, FlxG.height * 0.10);
+		// var bg: FlxSprite = new FlxSprite(-100, -65).loadGraphic(Paths.image('stevetitle'));
 		// bg.setGraphicSize(Std.int(bg.width * 0.25));
 		// bg.updateHitbox();
-		//add(bg);
+		// add(bg);
 
 		logoBl = new FlxSprite(110, -250).loadGraphic(Paths.image('jellymidbig'));
 		logoBl.antialiasing = true;
@@ -184,13 +182,13 @@ class TitleState extends MusicBeatState
 		// logoBl.color = FlxColor.BLACK;
 		add(logoBl);
 
-		//gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
-		//gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
-		//gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
-		//gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
-		//gfDance.x -= -100;
-		//gfDance.antialiasing = true;
-		//add(gfDance);
+		// gfDance = new FlxSprite(FlxG.width * 0.4, FlxG.height * 0.07);
+		// gfDance.frames = Paths.getSparrowAtlas('gfDanceTitle');
+		// gfDance.animation.addByIndices('danceLeft', 'gfDance', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+		// gfDance.animation.addByIndices('danceRight', 'gfDance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+		// gfDance.x -= -100;
+		// gfDance.antialiasing = true;
+		// add(gfDance);
 
 		titleText = new FlxSprite(180, 600);
 		titleText.frames = Paths.getSparrowAtlas('titleEnter');
@@ -201,7 +199,6 @@ class TitleState extends MusicBeatState
 		titleText.updateHitbox();
 		// titleText.screenCenter(X);
 		add(titleText);
-
 
 		// FlxTween.tween(logoBl, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG});
 		// FlxTween.tween(logo, {y: logoBl.y + 50}, 0.6, {ease: FlxEase.quadInOut, type: PINGPONG, startDelay: 0.1});
@@ -227,7 +224,6 @@ class TitleState extends MusicBeatState
 		ngSpr.updateHitbox();
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = true;
-
 
 		FlxTween.tween(credTextShit, {y: credTextShit.y + 20}, 2.9, {ease: FlxEase.expoInOut, type: PINGPONG});
 
@@ -310,15 +306,17 @@ class TitleState extends MusicBeatState
 			new FlxTimer().start(2, function(tmr:FlxTimer)
 			{
 				// Get current version of Kade Engine
-				
+
 				var http = new haxe.Http("https://raw.githubusercontent.com/KadeDev/Kade-Engine/master/version.downloadMe");
 				var returnedData:Array<String> = [];
-				
-				http.onData = function (data:String)
+
+				http.onData = function(data:String)
 				{
 					returnedData[0] = data.substring(0, data.indexOf(';'));
 					returnedData[1] = data.substring(data.indexOf('-'), data.length);
-				  	if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim()) && !InfoState.leftState && MainMenuState.nightly == "")
+					if (!MainMenuState.kadeEngineVer.contains(returnedData[0].trim())
+						&& !InfoState.leftState
+						&& MainMenuState.nightly == "")
 					{
 						trace('outdated lmao! ' + returnedData[0] + ' != ' + MainMenuState.kadeEngineVer);
 						InfoState.needVer = returnedData[0];
@@ -330,37 +328,38 @@ class TitleState extends MusicBeatState
 						FlxG.switchState(new MainMenuState());
 					}
 				}
-				
-				http.onError = function (error) {
-				  trace('error: $error');
-				  FlxG.switchState(new MainMenuState()); // fail but we go anyway
+
+				http.onError = function(error)
+				{
+					trace('error: $error');
+					FlxG.switchState(new MainMenuState()); // fail but we go anyway
 				}
-				
+
 				http.request();
 			});
 			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 		}
 
-        if (startscroll == true)
-            {
-                startscroll = false;
-                panoclone.x = 1280;
-                pano.x = 0;
-                //pano.visible = false;
-                FlxTween.tween(pano, {x: -1600}, 90, {
-                onComplete: function(twn:FlxTween)
-            {
-                tween = FlxTween.tween(pano, { x: -2880 }, 90);
-                FlxTween.tween(panoclone, {x: 0}, 90, {
-                onComplete: function(twn:FlxTween)
-            {
-                tween.cancel();
-                startscroll = true;
-            }
-        });
-            }
-        });
-            }
+		if (startscroll == true)
+		{
+			startscroll = false;
+			panoclone.x = 1280;
+			pano.x = 0;
+			// pano.visible = false;
+			FlxTween.tween(pano, {x: -1600}, 90, {
+				onComplete: function(twn:FlxTween)
+				{
+					tween = FlxTween.tween(pano, {x: -2880}, 90);
+					FlxTween.tween(panoclone, {x: 0}, 90, {
+						onComplete: function(twn:FlxTween)
+						{
+							tween.cancel();
+							startscroll = true;
+						}
+					});
+				}
+			});
+		}
 
 		if (pressedEnter && !skippedIntro && initialized)
 		{
@@ -403,16 +402,16 @@ class TitleState extends MusicBeatState
 	override function beatHit()
 	{
 		super.beatHit();
-		//danceLeft = !danceLeft
-		//if (danceLeft)
+		// danceLeft = !danceLeft
+		// if (danceLeft)
 		//	gfDance.animation.play('danceRight');
-		//else
+		// else
 		//	gfDance.animation.play('danceLeft');
 
-		//FlxG.log.add(curBeat);
+		// FlxG.log.add(curBeat);
 
-	 FlxTween.tween(FlxG.camera, {zoom:1.05}, 0.3, {ease: FlxEase.expoInOut, type: BACKWARD});
-		
+		FlxTween.tween(FlxG.camera, {zoom: 1.05}, 0.3, {ease: FlxEase.expoInOut, type: BACKWARD});
+
 		switch (curBeat)
 		{
 			case 1:
@@ -428,13 +427,12 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-			
 				createCoolText(['From the', 'creators of']);
 
 			case 7:
 				addMoreText('');
 				ngSpr.visible = true;
-		
+
 			// credTextShit.text += '\nNewgrounds';
 			case 8:
 				deleteCoolText();
@@ -477,7 +475,7 @@ class TitleState extends MusicBeatState
 			FlxG.camera.flash(FlxColor.WHITE, 4);
 			remove(credGroup);
 			skippedIntro = true;
-            startscroll = true;
+			startscroll = true;
 		}
 	}
 }

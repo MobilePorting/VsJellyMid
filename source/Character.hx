@@ -16,6 +16,7 @@ class Character extends FlxSprite
 	public var curCharacter:String = 'bf';
 	public var holdTimer:Float = 0;
 	public var iconColor:String = "FF82d4f5";
+
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false)
 	{
 		super(x, y);
@@ -76,7 +77,7 @@ class Character extends FlxSprite
 				animation.addByPrefix('hey', 'BF HEY', 24, false);
 
 				animation.addByPrefix('pre-attack', 'bf pre attack', 24, false);
-				animation.addByPrefix('attack', 'boyfriend attack', 24 , false);
+				animation.addByPrefix('attack', 'boyfriend attack', 24, false);
 
 				animation.addByPrefix('firstDeath', "BF dies", 24, false);
 				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
@@ -139,126 +140,124 @@ class Character extends FlxSprite
 
 				flipX = true;
 
-				case 'jellymid':
-					iconColor = 'FF582B68';
-					frames = Paths.getSparrowAtlas('characters/jellymid');
-					animation.addByPrefix('idle', 'jellymid idle', 24, false);
-					animation.addByPrefix('singUP', 'jellymid up', 24, false);
-					animation.addByPrefix('singLEFT', 'jellymid left', 24, false);
-					animation.addByPrefix('singRIGHT', 'jellymid right', 24, false);
-					animation.addByPrefix('singDOWN', 'jellymid down', 24, false);
-	
-					addOffset('idle', -250, -260);
-					addOffset("singUP", -232, -258);
-					addOffset("singRIGHT", -243, -257);
-					addOffset("singLEFT", -243, -258);
-					addOffset("singDOWN", -246, -256);
-	
-					playAnim('idle');
-	
-					setGraphicSize(Std.int(width * 0.85));
-					updateHitbox();
-	
-					antialiasing = false;
+			case 'jellymid':
+				iconColor = 'FF582B68';
+				frames = Paths.getSparrowAtlas('characters/jellymid');
+				animation.addByPrefix('idle', 'jellymid idle', 24, false);
+				animation.addByPrefix('singUP', 'jellymid up', 24, false);
+				animation.addByPrefix('singLEFT', 'jellymid left', 24, false);
+				animation.addByPrefix('singRIGHT', 'jellymid right', 24, false);
+				animation.addByPrefix('singDOWN', 'jellymid down', 24, false);
 
-				case 'jellybean':
-					iconColor = 'FF582B68';
-					frames = Paths.getSparrowAtlas('characters/jellybean');
-					animation.addByPrefix('idle', 'jellybean idle', 24, false);
-					animation.addByPrefix('singUP', 'jellybean up note', 24, false);
-					animation.addByPrefix('singRIGHT', 'jellybean left note', 24, false);
-					animation.addByPrefix('singLEFT', 'jellybean right note', 24, false);
-					animation.addByPrefix('singDOWN', 'jellybean down note', 24, false);
-					animation.addByPrefix('singUPmiss', 'jellybean up miss', 24, false);
-					animation.addByPrefix('singRIGHTmiss', 'jellybean left miss', 24, false);
-					animation.addByPrefix('singLEFTmiss', 'jellybean right miss', 24, false);
-					animation.addByPrefix('singDOWNmiss', 'jellybean down miss', 24, false);
-	
-					addOffset('idle');
-					addOffset("singUP");
-					addOffset("singRIGHT");
-					addOffset("singLEFT");
-					addOffset("singDOWN");
-					addOffset("singUPmiss");
-					addOffset("singRIGHTmiss");
-					addOffset("singLEFTmiss");
-					addOffset("singDOWNmiss");
-	
-					playAnim('idle');
-	
-					setGraphicSize(Std.int(width * 0.8));
-					updateHitbox();
-	
-					antialiasing = false;
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -232, -258);
+				addOffset("singRIGHT", -243, -257);
+				addOffset("singLEFT", -243, -258);
+				addOffset("singDOWN", -246, -256);
 
-					flipX = true;
+				playAnim('idle');
 
-				case 'jelly-death':
-					frames = Paths.getSparrowAtlas('jellyleandeath/jelly-death');
-					
-					animation.addByPrefix('firstDeath', "jelly-death ouch", 24, false);
-					animation.addByPrefix('deathLoop', "jelly-death waaa", 24, true);
-					animation.addByPrefix('deathConfirm', "jelly-death waaa", 24, false);
-					
+				setGraphicSize(Std.int(width * 0.85));
+				updateHitbox();
 
-					addOffset('firstDeath', 47, 11);
-					addOffset('deathLoop', 47, 11);
-					addOffset('deathConfirm', 47, 11);
-					playAnim('firstDeath');
+				antialiasing = false;
 
-					setGraphicSize(Std.int(width * 0.8));
-					updateHitbox();
-		
-					antialiasing = false;
+			case 'jellybean':
+				iconColor = 'FF582B68';
+				frames = Paths.getSparrowAtlas('characters/jellybean');
+				animation.addByPrefix('idle', 'jellybean idle', 24, false);
+				animation.addByPrefix('singUP', 'jellybean up note', 24, false);
+				animation.addByPrefix('singRIGHT', 'jellybean left note', 24, false);
+				animation.addByPrefix('singLEFT', 'jellybean right note', 24, false);
+				animation.addByPrefix('singDOWN', 'jellybean down note', 24, false);
+				animation.addByPrefix('singUPmiss', 'jellybean up miss', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'jellybean left miss', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'jellybean right miss', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'jellybean down miss', 24, false);
 
-				case 'skeleton':
-					iconColor = 'FFA26060';
-					frames = Paths.getSparrowAtlas('characters/skeleton');
-					animation.addByPrefix('idle', 'skeleton idle', 24, false);
-					animation.addByPrefix('singUP', 'skeleton up', 24, false);
-					animation.addByPrefix('singLEFT', 'skeleton left', 24, false);
-					animation.addByPrefix('singRIGHT', 'skeleton right', 24, false);
-					animation.addByPrefix('singDOWN', 'skeleton down', 24, false);
-					animation.addByPrefix('watchThis', 'skeleton watch this', 24, false);
-	
-					addOffset('idle', -250, -260);
-					addOffset("singUP", -254, -268);
-					addOffset("singRIGHT", -252, -257);
-					addOffset("singLEFT", -243, -258);
-					addOffset("singDOWN", -244, -270);
-					addOffset("watchThis", -250, -260);
-	
-					playAnim('idle');
-	
-					setGraphicSize(Std.int(width * 0.9));
-					updateHitbox();
-	
-					antialiasing = false;
+				addOffset('idle');
+				addOffset("singUP");
+				addOffset("singRIGHT");
+				addOffset("singLEFT");
+				addOffset("singDOWN");
+				addOffset("singUPmiss");
+				addOffset("singRIGHTmiss");
+				addOffset("singLEFTmiss");
+				addOffset("singDOWNmiss");
 
-				case 'skeletonguitar':
-					iconColor = 'FFA26060';
-					frames = Paths.getSparrowAtlas('characters/guitar skeleton');
-					animation.addByPrefix('idle', 'guitar skeleton idle', 24, false);
-					animation.addByPrefix('singUP', 'guitar skeleton up', 24, false);
-					animation.addByPrefix('singLEFT', 'guitar skeleton left', 24, false);
-					animation.addByPrefix('singRIGHT', 'guitar skeleton right', 24, false);
-					animation.addByPrefix('singDOWN', 'guitar skeleton down', 24, false);
-					animation.addByPrefix('whatIsIt', 'guitar skeleton what is it', 24, false);
-	
-					addOffset('idle', -250, -260);
-					addOffset("singUP", -254, -268);
-					addOffset("singRIGHT", -252, -257);
-					addOffset("singLEFT", -243, -258);
-					addOffset("singDOWN", -244, -270);
-					addOffset("whatIsIt", -250, -260);
-	
-	
-					playAnim('idle');
-	
-					setGraphicSize(Std.int(width * 0.9));
-					updateHitbox();
-	
-					antialiasing = false;
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 0.8));
+				updateHitbox();
+
+				antialiasing = false;
+
+				flipX = true;
+
+			case 'jelly-death':
+				frames = Paths.getSparrowAtlas('jellyleandeath/jelly-death');
+
+				animation.addByPrefix('firstDeath', "jelly-death ouch", 24, false);
+				animation.addByPrefix('deathLoop', "jelly-death waaa", 24, true);
+				animation.addByPrefix('deathConfirm', "jelly-death waaa", 24, false);
+
+				addOffset('firstDeath', 47, 11);
+				addOffset('deathLoop', 47, 11);
+				addOffset('deathConfirm', 47, 11);
+				playAnim('firstDeath');
+
+				setGraphicSize(Std.int(width * 0.8));
+				updateHitbox();
+
+				antialiasing = false;
+
+			case 'skeleton':
+				iconColor = 'FFA26060';
+				frames = Paths.getSparrowAtlas('characters/skeleton');
+				animation.addByPrefix('idle', 'skeleton idle', 24, false);
+				animation.addByPrefix('singUP', 'skeleton up', 24, false);
+				animation.addByPrefix('singLEFT', 'skeleton left', 24, false);
+				animation.addByPrefix('singRIGHT', 'skeleton right', 24, false);
+				animation.addByPrefix('singDOWN', 'skeleton down', 24, false);
+				animation.addByPrefix('watchThis', 'skeleton watch this', 24, false);
+
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -254, -268);
+				addOffset("singRIGHT", -252, -257);
+				addOffset("singLEFT", -243, -258);
+				addOffset("singDOWN", -244, -270);
+				addOffset("watchThis", -250, -260);
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 0.9));
+				updateHitbox();
+
+				antialiasing = false;
+
+			case 'skeletonguitar':
+				iconColor = 'FFA26060';
+				frames = Paths.getSparrowAtlas('characters/guitar skeleton');
+				animation.addByPrefix('idle', 'guitar skeleton idle', 24, false);
+				animation.addByPrefix('singUP', 'guitar skeleton up', 24, false);
+				animation.addByPrefix('singLEFT', 'guitar skeleton left', 24, false);
+				animation.addByPrefix('singRIGHT', 'guitar skeleton right', 24, false);
+				animation.addByPrefix('singDOWN', 'guitar skeleton down', 24, false);
+				animation.addByPrefix('whatIsIt', 'guitar skeleton what is it', 24, false);
+
+				addOffset('idle', -250, -260);
+				addOffset("singUP", -254, -268);
+				addOffset("singRIGHT", -252, -257);
+				addOffset("singLEFT", -243, -258);
+				addOffset("singDOWN", -244, -270);
+				addOffset("whatIsIt", -250, -260);
+
+				playAnim('idle');
+
+				setGraphicSize(Std.int(width * 0.9));
+				updateHitbox();
+
+				antialiasing = false;
 
 			case 'minecraftDEATH': // tragically and sadly:((
 				frames = Paths.getSparrowAtlas('death/minecraftDEATH');
@@ -266,16 +265,16 @@ class Character extends FlxSprite
 				animation.addByPrefix('deathLoop', "minecraftDEATH despawn", 24, true);
 				animation.addByPrefix('deathConfirm', "minecraftDEATH despawn", 24, false);
 				animation.play('firstDeath');
-	
+
 				addOffset('firstDeath', 47, 11);
 				addOffset('deathLoop', -500, -129);
 				addOffset('deathConfirm', -500, -129);
 				playAnim('firstDeath');
 				setGraphicSize(Std.int(width * 5));
 				updateHitbox();
-	
+
 				antialiasing = false;
-					
+
 				flipX = true;
 		}
 
