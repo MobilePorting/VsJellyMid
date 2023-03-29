@@ -2063,7 +2063,6 @@ class PlayState extends MusicBeatState
 
 					if (SONG.validScore)
 					{
-						NGio.unlockMedal(60961);
 						Highscore.saveWeekScore(storyWeek, campaignScore, storyDifficulty);
 					}
 
@@ -2668,6 +2667,7 @@ class PlayState extends MusicBeatState
 		}
 
     function docaching(){
+        #if desktop
 		var images = [];
 		var xml = [];
 		trace("caching");
@@ -2695,6 +2695,7 @@ class PlayState extends MusicBeatState
 			FlxG.bitmap.add(Paths.image("jellyleandeath/" + replaced,"shared"));
 			trace("cached " + replaced);
 		}
+		#end
 	}
 
 
