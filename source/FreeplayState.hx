@@ -277,9 +277,6 @@ class FreeplayState extends MusicBeatState
 			LoadingState.loadAndSwitchState(new PlayState());
 		}
 
-                private static var vocals:FlxSound = null;
-                var instPlaying:Int = -1;
-
                 if(#if mobileC FlxG.save.data.mobileC && virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
                 if(instPlaying != curSelected) {
                 #if PRELOAD_ALL
@@ -304,6 +301,8 @@ class FreeplayState extends MusicBeatState
                 }
 	}
 
+                private static var vocals:FlxSound = null;
+                var instPlaying:Int = -1;
 	function changeDiff(change:Int = 0)
 	{
 		curDifficulty += change;
