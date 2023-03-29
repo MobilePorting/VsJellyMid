@@ -95,7 +95,8 @@ class WarnCreditState extends MusicBeatState
 		}, 0);
 
                 #if (mobileC || mobileCweb)
-		addVirtualPad(NONE, A_B);
+                if (FlxG.save.data.mobileC) {
+		addVirtualPad(NONE, A_B); }
 		#end
 	}
 

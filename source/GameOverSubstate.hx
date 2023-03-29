@@ -90,8 +90,9 @@ class GameOverSubstate extends MusicBeatSubstate
 		}
 
                 #if (mobileC || mobileCweb)
+                if (FlxG.save.data.mobileC) {
 		addVirtualPad(NONE, A_B);
-		addVirtualPadCamera(false);
+		addVirtualPadCamera(false); }
 		#end
 	}
 

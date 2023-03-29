@@ -98,7 +98,8 @@ class Credits extends MusicBeatState
 		changeSelection();
 
                 #if (mobileC || mobileCweb)
-		addVirtualPad(UP_DOWN, A_B);
+                if (FlxG.save.data.mobileC) {
+		addVirtualPad(UP_DOWN, A_B); }
 		#end
 		super.create();
 	}

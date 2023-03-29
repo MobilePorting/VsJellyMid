@@ -1,7 +1,3 @@
-# Web Lua
-# haxelib git hxjs-fengari https://github.com/kevinresol/hxjs-fengari.git
-# haxelib git hxvm-luajit https://github.com/nebulazorua/hxvm-luajit.git
-
 name: HTML5 Build CI
 on: [workflow_dispatch]
 jobs:

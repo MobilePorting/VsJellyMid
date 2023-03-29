@@ -176,9 +176,11 @@ class FreeplayState extends MusicBeatState
                 #end
 
                 #if mobileC
-                addVirtualPad(LEFT_FULL, A_B_C);
+                if (FlxG.save.data.mobileC) {
+                addVirtualPad(LEFT_FULL, A_B_C); }
                 #elseif mobileCweb
-                addVirtualPad(LEFT_FULL, A_B);
+                if (FlxG.save.data.mobileC) {
+                addVirtualPad(LEFT_FULL, A_B); }
                 #end
 
 		super.create();
@@ -222,7 +224,7 @@ class FreeplayState extends MusicBeatState
 
 		var upP = controls.UP_P;
 		var downP = controls.DOWN_P;
-		var accepted = #if (mobileC || mobileCweb) virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.ENTER;
+		var accepted = #if (mobileC || mobileCweb) FlxG.save.data.mobileC && virtualPad.buttonA.justPressed || #end FlxG.keys.justPressed.ENTER;
 
 		if (upP)
 		{
@@ -278,7 +280,7 @@ class FreeplayState extends MusicBeatState
                 private static var vocals:FlxSound = null;
                 var instPlaying:Int = -1;
 
-                if(#if mobileC virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
+                if(#if mobileC FlxG.save.data.mobileC && virtualPad.buttonC.justPressed || #end FlxG.keys.justPressed.SPACE) {
                 if(instPlaying != curSelected) {
                 #if PRELOAD_ALL
 		destroyFreeplayVocals();

@@ -80,7 +80,6 @@ class PlayState extends MusicBeatState
 	public static var goods:Int = 0;
 	public static var sicks:Int = 0;
 
-
 	public static var songPosBG:FlxSprite;
 	public static var songPosXP:FlxSprite;
 	public static var songPosBar:FlxBar;
@@ -681,6 +680,11 @@ class PlayState extends MusicBeatState
 
 		if (!loadRep)
 			rep = new Replay("na");
+
+		#if (ios || mobileCweb)
+		addVirtualPad(NONE, P);
+		addVirtualPadCamera(false);
+		#end
 
 		super.create();
 	}
@@ -1436,15 +1440,11 @@ class PlayState extends MusicBeatState
 			iconP1.animation.curAnim.curFrame = 3;
 		}
 
-		switch (curStage)
-		{
-		}
-
 		super.update(elapsed);
 
 		scoreTxt.text = Ratings.CalculateRanking(songScore,songScoreDef,nps,maxNPS,accuracy);
 
-		if (#if android FlxG.android.justReleased.BACK || #end controls.PAUSE && startedCountdown && canPause)
+		if (#if android FlxG.android.justReleased.BACK || #elseif (ios || mobileCweb) virtualPad.buttonP.justPressed || #end controls.PAUSE && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
 			persistentDraw = true;
