@@ -93,6 +93,10 @@ class Credits extends MusicBeatState
 		bg.color = creditsStuff[curSelected][4];
 		originalColor = bg.color;
 		changeSelection();
+
+                #if (mobileC || mobileCweb)
+		addVirtualPad(UP_DOWN, A_B);
+		#end
 		super.create();
 	}
 
