@@ -37,8 +37,8 @@ class LoadingState extends MusicBeatState
 		logo = new FlxSprite(-150, -100);
 		logo.frames = Paths.getSparrowAtlas('logoBumpin');
 		logo.antialiasing = true;
-		logo.animation.addByPrefix('bump', 'logo bumpin', 24);
-		logo.animation.play('bump');
+		//logo.animation.addByPrefix('bump', 'logo bumpin', 24);
+		//logo.animation.play('bump');
 		logo.updateHitbox();
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
@@ -58,11 +58,11 @@ class LoadingState extends MusicBeatState
 			checkLoadSong(getSongPath());
 			if (PlayState.SONG.needsVoices)
 				checkLoadSong(getVocalPath());
-			checkLibrary("shared");
+			/*checkLibrary("shared");
 			if (PlayState.storyWeek > 0)
 				checkLibrary("week" + PlayState.storyWeek);
 			else
-				checkLibrary("tutorial");
+				checkLibrary("tutorial");*/
 
 			var fadeTime = 0.5;
 			FlxG.camera.fade(FlxG.camera.bgColor, fadeTime, true);
