@@ -1,5 +1,4 @@
 package;
-//If youre seeing this... Tiago here...
 
 import Options.SpectatorMode;
 import flixel.input.keyboard.FlxKey;
@@ -375,14 +374,10 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.gfVersion)
 		{
-			case 'gf-car':
-				gfVersion = 'gf-car';
 			case 'gf-minecraft':
 				gfVersion = 'gf-minecraft';
 			case 'gf-christmas':
 				gfVersion = 'gf-christmas';
-			case 'gf-pixel':
-				gfVersion = 'gf-pixel';
 			case 'no-gf':
 				gfVersion = 'no-gf';
 			default:
@@ -544,10 +539,7 @@ class PlayState extends MusicBeatState
 				songPosBar.createFilledBar(FlxColor.fromString('#3D3540'), FlxColor.fromString('#' + dad.iconColor));
 				add(songPosBar);
 
-				if (dad.curCharacter == '303')
-					songPosXP = new FlxSprite(0, 25).loadGraphic(Paths.image('bossbarfront'));
-				else 
-					songPosXP = new FlxSprite(0, 25).loadGraphic(Paths.image('healthBar'));
+				songPosXP = new FlxSprite(0, 25).loadGraphic(Paths.image('healthBar'));
 
 				if (FlxG.save.data.downscroll)
 					songPosXP.y = FlxG.height * 0.9 + 45; 
@@ -1109,7 +1101,7 @@ class PlayState extends MusicBeatState
 			switch (SONG.noteStyle)
 			{
 				case 'pixel':
-					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/funkyArrows-pixels', 'week6'), true, 17, 17);
+					babyArrow.loadGraphic(Paths.image('weeb/pixelUI/funkyArrows-pixels'), true, 17, 17);
 					babyArrow.animation.add('green', [6]);
 					babyArrow.animation.add('red', [7]);
 					babyArrow.animation.add('blue', [5]);
@@ -2975,7 +2967,6 @@ class PlayState extends MusicBeatState
 				}
 		}
 		
-		
 		if (SONG.song.toLowerCase() == 'atrocity' && curBeat >= 64 && curBeat < 124)
 			{
 				FlxG.camera.zoom += 0.020;
@@ -3012,18 +3003,9 @@ class PlayState extends MusicBeatState
 				FlxTween.tween(camHUD, {x: -angleShit*6}, 0.2, {ease: FlxEase.linear});
 				FlxTween.tween(camHUD, {angle: angleShit}, 0.3, {ease: FlxEase.circOut});
 	
-	
 				FlxTween.tween(camGame, {x: -angleShit*6}, 0.2, {ease: FlxEase.linear});
 				FlxTween.tween(camGame, {angle: angleShit}, 0.3, {ease: FlxEase.circOut});
 			}
-
-			
-
 	}
-
 	var curLight:Int = 0;
 }
-//if you're reading this, heeelllooo from Tiago :P
-		// pleaaase dont port this into any other engine, thank you!
-		// this is a heavily edited vs steve version lmao- we literally made both mods
-//					Tiago (TracedInPurple)
