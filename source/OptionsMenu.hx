@@ -18,8 +18,8 @@ import lime.utils.Assets;
 
 class OptionsMenu extends MusicBeatState
 {
-                Paths.clearUnusedMemory();
-                Paths.clearStoredMemory();
+	Paths.clearUnusedMemory();
+	Paths.clearStoredMemory();
 
 	public static var instance:OptionsMenu;
 	var selector:FlxText;
@@ -112,20 +112,21 @@ class OptionsMenu extends MusicBeatState
 		FlxTween.tween(blackBorder,{y: FlxG.height - 18},2, {ease: FlxEase.elasticInOut});
 
                 #if (mobileC || mobileCweb)
-                if (FlxG.save.data.mobileC) {
+                if (FlxG.save.data.mobileC)
+               {
 		addVirtualPad(LEFT_FULL, A_B_C);
 		var xd:FlxText = new FlxText(10, 14, 0, 'Press C to customize your android controls', 16);
 		xd.setFormat(Paths.font('vcr.ttf'), 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		xd.borderSize = 2.4;
 		xd.scrollFactor.set();
-		add(xd); }
+		add(xd);
+                }
 		#end
 
 		super.create();
 	}
 
 	var isCat:Bool = false;
-	
 
 	override function update(elapsed:Float)
 	{
