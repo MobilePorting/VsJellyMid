@@ -1,4 +1,3 @@
-bf
 bf-minecraft
 gf-minecraft
 gf-christmas
