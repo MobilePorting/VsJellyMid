@@ -30,6 +30,22 @@ class Character extends FlxSprite
 
 		switch (curCharacter)
 		{
+                        case 'gf-minecraft':
+				iconColor = 'FFB03060';
+				tex = Paths.getSparrowAtlas('characters/gf-minecraft');
+				frames = tex;
+				animation.addByIndices('danceLeft', 'gf-minecraft GF dance', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 30, false);
+				animation.addByIndices('danceRight', 'gf-minecraft GF dance', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30], "", 30, false);
+
+				addOffset('danceLeft', 0);
+				addOffset('danceRight', 0);
+
+				setGraphicSize(Std.int(width * 0.92));
+				updateHitbox();
+				antialiasing = false;
+
+				playAnim('danceRight');
+
 			case 'gf-christmas':
 				iconColor = 'FFB03060';
 				tex = Paths.getSparrowAtlas('characters/gfChristmas');
