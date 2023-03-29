@@ -148,7 +148,7 @@ class KeyBindMenu extends FlxSubState
 					FlxG.sound.play(Paths.sound('scrollMenu'));
 					state = "input";
 				}
-				else if (#if android FlxG.android.justReleased.BACK || #end FlxG.keys.justPressed.BACKSCAPE)
+				else if (#if android FlxG.android.justReleased.BACK || #end FlxG.keys.justPressed.BACKSPACE)
 				{
 					quit();
 				}
