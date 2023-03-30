@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<TextureAtlas imagePath="guitar skeletonk.png">
+<TextureAtlas imagePath="guitar skeleton.png">
 <SubTexture name="guitar skeleton idle0000" x="0" y="0" width="474" height="516" frameX="-421" frameY="-81" frameWidth="1284" frameHeight="724" />
 <SubTexture name="guitar skeleton idle0001" x="474" y="0" width="476" height="522" frameX="-421" frameY="-80" frameWidth="1284" frameHeight="724" />
 <SubTexture name="guitar skeleton idle0002" x="950" y="0" width="477" height="535" frameX="-421" frameY="-68" frameWidth="1284" frameHeight="724" />
