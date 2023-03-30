@@ -88,7 +88,7 @@ class ChartingState extends MusicBeatState
 	var vocals:FlxSound;
 
 	var player2:Character = new Character(0, 0, "dad");
-	var player1:Boyfriend = new Boyfriend(0, 0, "bf");
+	var player1:Boyfriend = new Boyfriend(0, 0, "bf-minecraft");
 
 	var leftIcon:HealthIcon;
 	var rightIcon:HealthIcon;
@@ -114,7 +114,7 @@ class ChartingState extends MusicBeatState
 				notes: [],
 				bpm: 150,
 				needsVoices: true,
-				player1: 'bf',
+				player1: 'bf-minecraft',
 				player2: 'dad',
 				gfVersion: 'gf',
 				noteStyle: 'normal',

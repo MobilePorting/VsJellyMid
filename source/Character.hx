@@ -13,7 +13,7 @@ class Character extends FlxSprite
 	public var debugMode:Bool = false;
 
 	public var isPlayer:Bool = false;
-	public var curCharacter:String = 'bf';
+	public var curCharacter:String = 'bf-minecraft';
 	public var holdTimer:Float = 0;
 	public var iconColor:String = "FF82d4f5";
 
@@ -77,50 +77,6 @@ class Character extends FlxSprite
 				addOffset('scared', -2, -17);
 
 				playAnim('danceRight');
-
-			case 'bf':
-				var tex = Paths.getSparrowAtlas('characters/BOYFRIEND');
-				frames = tex;
-				animation.addByPrefix('idle', 'BF idle dance', 24, false);
-				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
-				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
-				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
-				animation.addByPrefix('singUPmiss', 'BF NOTE UP MISS', 24, false);
-				animation.addByPrefix('singLEFTmiss', 'BF NOTE LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHTmiss', 'BF NOTE RIGHT MISS', 24, false);
-				animation.addByPrefix('singDOWNmiss', 'BF NOTE DOWN MISS', 24, false);
-				animation.addByPrefix('hey', 'BF HEY', 24, false);
-
-				animation.addByPrefix('pre-attack', 'bf pre attack', 24, false);
-				animation.addByPrefix('attack', 'boyfriend attack', 24, false);
-
-				animation.addByPrefix('firstDeath', "BF dies", 24, false);
-				animation.addByPrefix('deathLoop', "BF Dead Loop", 24, true);
-				animation.addByPrefix('deathConfirm', "BF Dead confirm", 24, false);
-
-				animation.addByPrefix('scared', 'BF idle shaking', 24);
-
-				addOffset('idle', -5);
-				addOffset("singUP", -29, 27);
-				addOffset("singRIGHT", -38, -7);
-				addOffset("singLEFT", 12, -6);
-				addOffset("singDOWN", -10, -50);
-				addOffset("singUPmiss", -29, 27);
-				addOffset("singRIGHTmiss", -30, 21);
-				addOffset("singLEFTmiss", 12, 24);
-				addOffset("singDOWNmiss", -11, -19);
-				addOffset("hey", 7, 4);
-				addOffset("pre-attack", 0, -32);
-				addOffset("attack", 177, 275);
-				addOffset('firstDeath', 37, 11);
-				addOffset('deathLoop', 37, 5);
-				addOffset('deathConfirm', 37, 69);
-				addOffset('scared', -4);
-
-				playAnim('idle');
-
-				flipX = true;
 
 			case 'bf-minecraft':
 				frames = Paths.getSparrowAtlas('characters/bf-minecraft');
@@ -211,7 +167,7 @@ class Character extends FlxSprite
 				flipX = true;
 
 			case 'jelly-death':
-				frames = Paths.getSparrowAtlas('jellyleandeath/jelly-death');
+				frames = Paths.getSparrowAtlas('characters/jelly-death');
 
 				animation.addByPrefix('firstDeath', "jelly-death ouch", 24, false);
 				animation.addByPrefix('deathLoop', "jelly-death waaa", 24, true);
@@ -276,7 +232,7 @@ class Character extends FlxSprite
 				antialiasing = false;
 
 			case 'minecraftDEATH': // tragically and sadly:((
-				frames = Paths.getSparrowAtlas('death/minecraftDEATH');
+				frames = Paths.getSparrowAtlas('characters/minecraftDEATH');
 				animation.addByPrefix('firstDeath', "minecraftDEATH death", 24, false);
 				animation.addByPrefix('deathLoop', "minecraftDEATH despawn", 24, true);
 				animation.addByPrefix('deathConfirm', "minecraftDEATH despawn", 24, false);

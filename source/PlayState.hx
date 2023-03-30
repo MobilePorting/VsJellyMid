@@ -861,10 +861,7 @@ class PlayState extends MusicBeatState
 
 			add(songPosBar);
 
-			if (dad.curCharacter == '303')
-				songPosXP = new FlxSprite(0, 25).loadGraphic(Paths.image('bossbarfront'));
-			else
-				songPosXP = new FlxSprite(0, 25).loadGraphic(Paths.image('healthBar'));
+			songPosXP = new FlxSprite(0, 25).loadGraphic(Paths.image('healthBar'));
 
 			if (FlxG.save.data.downscroll)
 				songPosXP.y = FlxG.height * 0.9 + 45;
@@ -2639,38 +2636,8 @@ class PlayState extends MusicBeatState
 
 	function docachingAtrocity()
 	{
-		#if desktop
-		var images = [];
-		var xml = [];
-		trace("caching");
-
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/images/jellyleandeath")))
-		{
-			if (!i.endsWith(".png"))
-				continue;
-			images.push(i);
-
-			if (!i.endsWith(".xml"))
-				continue;
-			xml.push(i);
-		}
-		for (i in images)
-		{
-			var replaced = i.replace(".png", "");
-			FlxG.bitmap.add(Paths.image("jellyleandeath/" + replaced, "shared"));
-			trace("cached " + replaced);
-		}
-
-		for (i in xml)
-		{
-			var replaced = i.replace(".xml", "");
-			FlxG.bitmap.add(Paths.image("jellyleandeath/" + replaced, "shared"));
-			trace("cached " + replaced);
-		}
-		#else
-                //FlxG.bitmap.add(Paths.image('jellyleandeath/' + 'jelly-death'));
+                //FlxG.bitmap.add(Paths.image('characters/' + 'jelly-death'));
                 FlxG.bitmap.add(Paths.image('characters/' + 'guitar skeleton'));
-                #end
 	}
 
 	function getKeyPresses(note:Note):Int
