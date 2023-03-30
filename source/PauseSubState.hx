@@ -31,8 +31,8 @@ class PauseSubState extends MusicBeatSubstate
 
 	public function new(x:Float, y:Float)
 	{
-	    Paths.clearUnusedMemory();
-		Paths.clearStoredMemory();
+		// Paths.clearUnusedMemory();
+		// Paths.clearStoredMemory();
 
 		super();
 
