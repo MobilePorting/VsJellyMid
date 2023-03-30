@@ -1703,6 +1703,9 @@ class PlayState extends MusicBeatState
 				vocals.stop();
 				FlxG.sound.music.stop();
 
+                                Paths.clearUnusedMemory();
+		                Paths.clearStoredMemory();
+
 				openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
 				#if windows
