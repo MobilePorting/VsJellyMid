@@ -1669,6 +1669,9 @@ class PlayState extends MusicBeatState
 			vocals.stop();
 			FlxG.sound.music.stop();
 
+		        Paths.clearUnusedMemory();
+		        Paths.clearStoredMemory();
+
 			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
 
 			#if windows
@@ -2662,7 +2665,7 @@ class PlayState extends MusicBeatState
 			trace("cached " + replaced);
 		}
 		#else
-                FlxG.bitmap.add(Paths.image('jellyleandeath/' + 'jelly-death'));
+                //FlxG.bitmap.add(Paths.image('jellyleandeath/' + 'jelly-death'));
                 FlxG.bitmap.add(Paths.image('characters/' + 'guitar skeleton'));
                 #end
 	}
