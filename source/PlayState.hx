@@ -662,7 +662,7 @@ class PlayState extends MusicBeatState
 		if (loadRep)
 			replayTxt.cameras = [camHUD];
 
-		#if (mobileC || mobileCweb) addMobileControls(false); #end
+		#if (mobileC || mobileCweb) if(FlxG.save.data.mobileC){addMobileControls(false);} #end
 		startingSong = true;
 
 		if (isStoryMode)
@@ -686,8 +686,9 @@ class PlayState extends MusicBeatState
 			rep = new Replay("na");
 
 		#if (ios || mobileCweb)
+                if (FlxG.save.data.mobileC) {
 		addVirtualPad(NONE, P);
-		addVirtualPadCamera(false);
+		addVirtualPadCamera(false); }
 		#end
 
 		super.create();
@@ -703,7 +704,7 @@ class PlayState extends MusicBeatState
 
 	function startCountdown():Void
 	{
-		#if (mobileC || mobileCweb) mobileControls.visible = true; #end
+		#if (mobileC || mobileCweb) if(FlxG.save.data.mobileC){mobileControls.visible = true;} #end
 
 		inCutscene = false;
 
@@ -1463,7 +1464,7 @@ class PlayState extends MusicBeatState
 		scoreTxt.text = Ratings.CalculateRanking(songScore, songScoreDef, nps, maxNPS, accuracy);
 
 		if (#if android FlxG.android.justReleased.BACK
-			|| #elseif (ios || mobileCweb) virtualPad.buttonP.justPressed
+			|| #elseif (ios || mobileCweb) FlxG.save.data.mobileC && virtualPad.buttonP.justPressed
 			|| #end controls.PAUSE && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
@@ -2011,7 +2012,7 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
-		#if (mobileC || mobileCweb) mobileControls.visible = false; #end
+		#if (mobileC || mobileCweb) if(FlxG.save.data.mobileC){mobileControls.visible = false;} #end
 
 		#if desktop
 		if (!loadRep)
