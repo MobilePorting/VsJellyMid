@@ -280,7 +280,6 @@ class Character extends FlxSprite
 				animation.addByPrefix('firstDeath', "minecraftDEATH death", 24, false);
 				animation.addByPrefix('deathLoop', "minecraftDEATH despawn", 24, true);
 				animation.addByPrefix('deathConfirm', "minecraftDEATH despawn", 24, false);
-				animation.play('firstDeath');
 
 				addOffset('firstDeath', 47, 11);
 				addOffset('deathLoop', -500, -129);
