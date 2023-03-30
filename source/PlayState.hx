@@ -322,11 +322,7 @@ class PlayState extends MusicBeatState
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
 
-		trace('INFORMATION ABOUT WHAT U PLAYIN WIT:\nFRAMES: ' + Conductor.safeFrames + '\nZONE: ' + Conductor.safeZoneOffset + '\nTS: '
-			+ Conductor.timeScale + '\nSpectator Mode : ' + FlxG.save.data.SpectatorMode);
-
-		// i disabled dialogues by replacing names with lmao, LMAOOOOOOOO -babobias
-		// haha enbaled dialogues go BRRRRRRR -Taigo
+		trace('INFORMATION ABOUT WHAT U PLAYIN WIT:\nFRAMES: ' + Conductor.safeFrames + '\nZONE: ' + Conductor.safeZoneOffset + '\nTS: ' + Conductor.timeScale + '\nSpectator Mode : ' + FlxG.save.data.SpectatorMode);
 
 		switch (SONG.stage)
 		{
@@ -349,7 +345,7 @@ class PlayState extends MusicBeatState
 					defaultCamZoom = 1.2;
 					curStage = 'jelly';
 
-					docaching();
+					docachingAtrocity();
 
 					var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('jelly/jellybensky'));
 					bg.setGraphicSize(Std.int(bg.width * 1.5));
@@ -2635,14 +2631,14 @@ class PlayState extends MusicBeatState
 		accuracyDefault = Math.max(0, totalNotesHitDefault / totalPlayed * 100);
 	}
 
-	function docaching()
+	function docachingAtrocity()
 	{
 		#if desktop
 		var images = [];
 		var xml = [];
 		trace("caching");
 
-		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/shared/images/jellyleandeath")))
+		for (i in FileSystem.readDirectory(FileSystem.absolutePath("assets/images/jellyleandeath")))
 		{
 			if (!i.endsWith(".png"))
 				continue;
@@ -2665,7 +2661,10 @@ class PlayState extends MusicBeatState
 			FlxG.bitmap.add(Paths.image("jellyleandeath/" + replaced, "shared"));
 			trace("cached " + replaced);
 		}
-		#end
+		#else
+                FlxG.bitmap.add(Paths.image('jellyleandeath/' + 'jelly-death'));
+                FlxG.bitmap.add(Paths.image('characters/' + 'guitar skeleton'));
+                #end
 	}
 
 	function getKeyPresses(note:Note):Int
