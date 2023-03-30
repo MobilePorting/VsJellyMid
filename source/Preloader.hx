@@ -62,10 +62,10 @@ class Preloader extends FlxBasePreloader
 		addChild(bgclone);
 
 		/*logo = new Sprite();
-			logo.addChild(new Bitmap(new LogoShit (1,1)));
-			logo.x += 310;
-			logo.y += 150;
-			addChild(logo); */
+		logo.addChild(new Bitmap(new LogoShit (1,1)));
+		logo.x += 310;
+		logo.y += 150;
+		addChild(logo); */
 
 		loadtxtBg = new Bitmap(new BitmapData(1, 26, false, 0xFF000000));
 		loadtxtBg.alpha = 0.8;
@@ -105,7 +105,7 @@ class Preloader extends FlxBasePreloader
 	{
 		bg = null;
 		bgclone = null;
-		logo = null;
+		// logo = null;
 		loadtxtProgress = null;
 		text = null;
 		loadtxtBg = null;
